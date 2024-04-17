@@ -1,1 +1,3 @@
-export class GetSearchQuery {}
+export class GetSearchQuery {
+  constructor(public readonly search: string) {}
+}
