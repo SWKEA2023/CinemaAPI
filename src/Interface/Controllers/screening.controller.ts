@@ -1,5 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { SearchService } from '../../Domain/Service/search.service';
+import { ScreeningService } from '../../Domain/Service/screening.service';
 import {
   ApiBearerAuth,
   ApiOperation,
@@ -9,8 +9,8 @@ import {
 @ApiBearerAuth()
 @ApiTags('Screening')
 @Controller('screening')
-export class SearchController {
-  constructor(private readonly searchService: SearchService) {}
+export class ScreeningController {
+  constructor(private readonly searchService: ScreeningService) {}
 
   @Get(':search')
   @ApiOperation({ summary: 'Get all by search' })
@@ -19,9 +19,14 @@ export class SearchController {
     description: 'The found record',
   })
   async searchAll(@Param('search') search: string) {
+    console.log('In search Controller');
+    
+    console.log(search);
+    
     return this.searchService.getSearch(search);
   }
 
+  //VIRKER IKKE -> Den kalder på search....
   @Get('')
   @ApiOperation({ summary: 'Get all by index' })
   @ApiResponse({
@@ -29,6 +34,8 @@ export class SearchController {
     description: 'The found record',
   })
   async getAll(@Param('index') index: string) {
+    console.log('in Controller');
+    console.log(index);
     return this.searchService.getAll(index);
   }
 

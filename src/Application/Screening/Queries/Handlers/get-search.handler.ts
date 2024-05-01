@@ -11,7 +11,6 @@ export class GetSearchHandler implements IQueryHandler<GetSearchQuery> {
     const searchResult = await this.esService.search({
       q: query.search,
     });
-    console.log(searchResult.hits.hits);
     return searchResult.hits.hits;
   }
 }
