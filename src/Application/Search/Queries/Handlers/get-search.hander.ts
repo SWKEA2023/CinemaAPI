@@ -10,20 +10,7 @@ export class GetSearchHandler implements IQueryHandler<GetSearchQuery> {
     private readonly configService: ConfigService,
   ) {}
   async execute(query: GetSearchQuery) {
-    query;
-    // const result = await this.esService.search({
-    //   index: this.configService.get('ES_INDEX_TARGET'),
-    //   q: query,
-    // body: {
-    //   query: {
-    //     match: {
-    //       title: q,
-    //     },
-    //   },
-    // },
-    // });
-
-    // return result.hits.hits;
-    return query;
+    const searchResult = await this.esService.search({   index: 'movies',   q: query.search }); console.log(searchResult.hits.hits)
+    return searchResult.hits.hits;
   }
 }
