@@ -19,23 +19,17 @@ export class ScreeningController {
     description: 'The found record',
   })
   async searchAll(@Param('search') search: string) {
-    console.log('In search Controller');
-    
-    console.log(search);
-    
     return this.searchService.getSearch(search);
   }
 
   //VIRKER IKKE -> Den kalder på search....
-  @Get('')
+  @Get('/all/:index')
   @ApiOperation({ summary: 'Get all by index' })
   @ApiResponse({
     status: 200,
     description: 'The found record',
   })
   async getAll(@Param('index') index: string) {
-    console.log('in Controller');
-    console.log(index);
     return this.searchService.getAll(index);
   }
 

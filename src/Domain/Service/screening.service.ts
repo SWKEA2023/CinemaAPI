@@ -12,9 +12,6 @@ export class ScreeningService {
   }
 
   getAll(index: string) {
-    console.log('in Service');
-    
-    console.log(index);
     return this.queryBus.execute(new GetAllQuery(index));
   }
 }
