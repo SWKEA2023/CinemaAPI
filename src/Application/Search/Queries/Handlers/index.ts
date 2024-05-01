@@ -1,3 +1,4 @@
-import { GetSearchHandler } from './get-search.hander';
+import { GetSearchHandler } from './get-search.handler';
+import { GetAllHandler } from './get-all.handler';
 
-export const QueryHandlers = [GetSearchHandler];
+export const QueryHandlers = [GetSearchHandler, GetAllHandler];

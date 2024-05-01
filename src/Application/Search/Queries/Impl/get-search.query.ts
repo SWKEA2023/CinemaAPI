@@ -1,3 +1,4 @@
 export class GetSearchQuery {
-  constructor(public readonly search: string) {}
+  constructor(
+    public readonly search: string) {}
 }

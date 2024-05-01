@@ -13,12 +13,29 @@ export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
   @Get(':search')
-  @ApiOperation({ summary: 'Get movie by search' })
+  @ApiOperation({ summary: 'Get index by search' })
   @ApiResponse({
     status: 200,
     description: 'The found record',
   })
-  async getMovie(@Param('search') search: string) {
+  async searchAll(@Param('search') search: string) {
     return this.searchService.getSearch(search);
   }
+
+  @Get('')
+  @ApiOperation({ summary: 'Get all by index' })
+  @ApiResponse({
+    status: 200,
+    description: 'The found record',
+  })
+  async getAll(@Param('index') index: string) {
+    return this.searchService.getAll(index);
+  }
+
+  //Ny navngivning til search..
+  //Implementer resten af endpoints her. 
+  //getScreening
+  //getScreenings
+  //getMovies
+
 }
