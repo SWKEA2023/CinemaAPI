@@ -7,13 +7,13 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 @ApiBearerAuth()
-@ApiTags('Search')
-@Controller('search')
+@ApiTags('Screening')
+@Controller('screening')
 export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
   @Get(':search')
-  @ApiOperation({ summary: 'Get index by search' })
+  @ApiOperation({ summary: 'Get all by search' })
   @ApiResponse({
     status: 200,
     description: 'The found record',

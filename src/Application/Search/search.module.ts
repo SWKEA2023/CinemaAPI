@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { QueryHandlers } from './Queries/Handlers';
 import { CqrsModule } from '@nestjs/cqrs';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { SearchController } from 'src/Interface/Controllers/search.controller';
+import { SearchController } from 'src/Interface/Controllers/screening.controller';
 import { SearchService } from 'src/Domain/Service/search.service';
 import { ElasticsearchModule } from '@nestjs/elasticsearch';
 
