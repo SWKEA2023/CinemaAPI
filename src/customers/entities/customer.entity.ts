@@ -1,5 +1,6 @@
 import { AggregateRoot } from '@nestjs/cqrs';
-import { ApiProperty, ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Order } from 'src/orders/entities/order.entity';
 
 export class Customer extends AggregateRoot {
   @ApiPropertyOptional({
