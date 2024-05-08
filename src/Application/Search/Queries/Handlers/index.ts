@@ -1,3 +1,3 @@
-import { GetSearchHandler } from './get-search.hander';
+import { GetSearchHandler } from './get-search.handler';
 
 export const QueryHandlers = [GetSearchHandler];

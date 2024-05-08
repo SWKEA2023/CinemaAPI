@@ -13,10 +13,10 @@ export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
   @Get(':search')
-  @ApiOperation({ summary: 'Get movie by search' })
+  @ApiOperation({ summary: 'Get value/values by search' })
   @ApiResponse({
     status: 200,
-    description: 'The found record',
+    description: 'Searches all docs by search value',
   })
   async getMovie(@Param('search') search: string) {
     return this.searchService.getSearch(search);

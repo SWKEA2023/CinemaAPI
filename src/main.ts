@@ -7,8 +7,8 @@ import { ConfigService } from '@nestjs/config';
 
 function setupSwagger(app: INestApplication): void {
   const documentBuilder = new DocumentBuilder()
-    .setTitle('Nest.js example')
-    .setDescription('This is example for nest.js')
+    .setTitle('Cinema API')
+    .setDescription('This is a client API for Cinema service')
     .setVersion('1.0')
     .addBasicAuth()
     .build();
@@ -34,7 +34,7 @@ async function bootstrap() {
   });
 
   setupSwagger(app);
-  await app.listen(3000);
+  await app.listen(3002);
 }
 
 bootstrap();
