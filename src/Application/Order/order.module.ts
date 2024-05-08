@@ -3,9 +3,23 @@ import { OrderService } from '../../Domain/Service/order.service';
 import { OrderController } from '../../Interface/Controllers/order.controller';
 import { CqrsModule } from '@nestjs/cqrs';
 import { CommandHandlers } from './Commands/Handlers';
+import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
-  imports: [CqrsModule],
+  imports: [
+    CqrsModule,
+    ClientsModule.register([
+      {
+        name: 'CINEMA_QUEUE',
+        transport: Transport.RMQ,
+        options: {
+          urls: [process.env.RMQ_URL],
+          queue: process.env.RMQ_QUEUE,
+          queueOptions: { durable: true },
+        },
+      },
+    ]),
+  ],
   controllers: [OrderController],
   providers: [OrderService, ...CommandHandlers],
 })

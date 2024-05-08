@@ -1,4 +1,4 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { OrderService } from '../../Domain/Service/order.service';
 import {
   ApiBearerAuth,
@@ -8,12 +8,17 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { Order } from 'src/Domain/Entities/order.entity';
+import { ClientProxy } from '@nestjs/microservices';
 
 @ApiBearerAuth()
 @ApiTags('orders')
 @Controller('order')
 export class OrderController {
-  constructor(private readonly orderService: OrderService) {}
+  constructor(
+    private readonly orderService: OrderService,
+    @Inject('CINEMA_QUEUE')
+    private readonly client: ClientProxy,
+  ) {}
 
   @Post()
   @ApiOperation({ summary: 'Create order' })
@@ -23,7 +28,9 @@ export class OrderController {
     type: Order,
     description: 'The order has been successfully created',
   })
-  async create(order: Order): Promise<Order> {
-    return this.orderService.create(order);
+  async create(@Body() order: Order) {
+    const response = await this.orderService.create(order);
+    this.client.emit('created_order', response);
+    return response;
   }
 }
