@@ -16,7 +16,7 @@ import { ClientProxy } from '@nestjs/microservices';
 export class OrderController {
   constructor(
     private readonly orderService: OrderService,
-    @Inject('CINEMA_QUEUE')
+    @Inject('ORDER_QUEUE')
     private readonly client: ClientProxy,
   ) {}
 

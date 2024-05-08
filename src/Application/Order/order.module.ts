@@ -10,7 +10,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     CqrsModule,
     ClientsModule.register([
       {
-        name: 'CINEMA_QUEUE',
+        name: 'ORDER_QUEUE',
         transport: Transport.RMQ,
         options: {
           urls: [process.env.RMQ_URL],

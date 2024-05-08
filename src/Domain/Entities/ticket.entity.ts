@@ -9,12 +9,12 @@ export class Ticket {
   @ApiProperty({ description: 'Foreign key to Screening ID' })
   public fkScreeningId: number;
 
-  @ApiProperty({ type: Seat, description: 'Seat details' })
-  public seat: Seat;
+  @ApiProperty({ type: [Seat], description: 'Seats details' })
+  public seats: Seat[];
 
-  constructor(ticketId: number, fkScreeningId: number, seat: Seat) {
+  constructor(ticketId: number, fkScreeningId: number, seats: Seat[]) {
     this.ticketId = ticketId;
     this.fkScreeningId = fkScreeningId;
-    this.seat = seat;
+    this.seats = seats;
   }
 }

@@ -1,9 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class Customer {
-  @ApiProperty({ description: 'Customer ID' })
-  public customerId: number;
-
   @ApiProperty({ description: 'First name of the customer' })
   public firstName: string;
 
@@ -17,13 +14,11 @@ export class Customer {
   public phoneNumber: string;
 
   constructor(
-    customerId: number,
     firstName: string,
     lastName: string,
     email: string,
     phoneNumber: string,
   ) {
-    this.customerId = customerId;
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
