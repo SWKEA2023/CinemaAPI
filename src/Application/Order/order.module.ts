@@ -4,19 +4,25 @@ import { OrderController } from '../../Interface/Controllers/order.controller';
 import { CqrsModule } from '@nestjs/cqrs';
 import { CommandHandlers } from './Commands/Handlers';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
     CqrsModule,
-    ClientsModule.register([
+    ConfigModule,
+    ClientsModule.registerAsync([
       {
         name: 'ORDER_QUEUE',
-        transport: Transport.RMQ,
-        options: {
-          urls: [process.env.RMQ_URL],
-          queue: process.env.RMQ_QUEUE,
-          queueOptions: { durable: true },
-        },
+        imports: [ConfigModule], // Import ConfigModule
+        useFactory: async (configService: ConfigService) => ({
+          transport: Transport.RMQ,
+          options: {
+            urls: [configService.get<string>('RMQ_URL')], // Access environment variable using ConfigService
+            queue: configService.get<string>('RMQ_QUEUE'), // Access environment variable using ConfigService
+            queueOptions: { durable: true },
+          },
+        }),
+        inject: [ConfigService], // Inject ConfigService
       },
     ]),
   ],

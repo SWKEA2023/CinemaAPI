@@ -30,7 +30,7 @@ export class OrderController {
   })
   async create(@Body() order: Order) {
     const response = await this.orderService.create(order);
-    this.client.emit('created_order', response);
+    this.client.emit('created_order', order);
     return response;
   }
 }
