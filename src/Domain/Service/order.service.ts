@@ -1,15 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { Order } from '../Entities/order.entity';
 import { CommandBus } from '@nestjs/cqrs';
 import { CreateOrderCommand } from 'src/Application/Order/Commands/Impl/create-order.command';
+import { Ticket } from '../Entities/ticket.entity';
 
 @Injectable()
 export class OrderService {
   constructor(private readonly commandBus: CommandBus) {}
 
-  create(order: Order): any {
-    console.log(order);
-
+  create(order: Ticket): any {
     return this.commandBus.execute(new CreateOrderCommand(order));
   }
 }

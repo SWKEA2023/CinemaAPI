@@ -5,11 +5,26 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { CommandHandlers } from './Commands/Handlers';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ElasticsearchModule } from '@nestjs/elasticsearch';
 
 @Module({
   imports: [
     CqrsModule,
     ConfigModule,
+    ElasticsearchModule.registerAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => ({
+        node: configService.get('ELASTIC_HOST'),
+        auth: {
+          username: configService.get('ELASTIC_USERNAME'),
+          password: configService.get('ELASTIC_PASSWORD'),
+        },
+        tls: {
+          rejectUnauthorized: false,
+        },
+      }),
+    }),
     ClientsModule.registerAsync([
       {
         name: 'ORDER_QUEUE',

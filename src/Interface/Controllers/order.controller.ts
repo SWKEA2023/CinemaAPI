@@ -9,6 +9,7 @@ import {
 } from '@nestjs/swagger';
 import { Order } from 'src/Domain/Entities/order.entity';
 import { ClientProxy } from '@nestjs/microservices';
+import { Ticket } from 'src/Domain/Entities/ticket.entity';
 
 @ApiBearerAuth()
 @ApiTags('orders')
@@ -28,9 +29,12 @@ export class OrderController {
     type: Order,
     description: 'The order has been successfully created',
   })
-  async create(@Body() order: Order) {
+  async create(@Body() order: Ticket) {
     const response = await this.orderService.create(order);
-    this.client.emit('created_order', order);
+
+    console.log(response);
+
+    this.client.emit('created_order', response);
     return response;
   }
 }

@@ -1,5 +1,5 @@
-import { Order } from 'src/Domain/Entities/order.entity';
+import { Ticket } from 'src/Domain/Entities/ticket.entity';
 
 export class CreateOrderCommand {
-  constructor(public readonly order: Order) {}
+  constructor(public readonly order: Ticket) {}
 }

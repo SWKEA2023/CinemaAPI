@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import {ApiProperty } from '@nestjs/swagger';
 
 export class Seat {
   @ApiProperty({ description: 'Seat row number' })
@@ -10,18 +10,13 @@ export class Seat {
   @ApiProperty({ description: 'Price of the seat' })
   public price: number;
 
-  @ApiProperty({ description: 'Foreign key to Hall ID' })
-  public fkHallId: number;
-
   constructor(
     seatRow: number,
     seatNumber: number,
     price: number,
-    fkHallId: number,
   ) {
     this.seatRow = seatRow;
     this.seatNumber = seatNumber;
     this.price = price;
-    this.fkHallId = fkHallId;
   }
 }
