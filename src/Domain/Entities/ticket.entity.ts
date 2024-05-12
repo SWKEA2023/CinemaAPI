@@ -14,11 +14,11 @@ export class Ticket {
   @ApiHideProperty()
   public screening: Screening;
 
-  @ApiProperty({ type: [Seat], description: 'Seats details' })
-  public seats: Seat[];
+  @ApiProperty({ type: Seat, description: 'Seats details' })
+  public seat: Seat;
 
   constructor(
-    seats: Seat[],
+    seat: Seat,
     order: Order,
     screening: Screening,
     fkScreeningId?: number,
@@ -26,6 +26,6 @@ export class Ticket {
     this.order = order;
     this.screening = screening;
     this.fkScreeningId = fkScreeningId;
-    this.seats = seats;
+    this.seat = seat;
   }
 }

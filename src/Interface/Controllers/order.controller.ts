@@ -32,9 +32,8 @@ export class OrderController {
   async create(@Body() order: Ticket) {
     const response = await this.orderService.create(order);
 
-    console.log(response);
-
     this.client.emit('created_order', response);
-    return response;
+
+    console.log('order send', response);
   }
 }

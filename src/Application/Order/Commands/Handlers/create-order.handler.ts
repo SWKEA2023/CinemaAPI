@@ -19,7 +19,11 @@ export class CreateOrderHandler implements ICommandHandler<CreateOrderCommand> {
 
     const screening = searchResult.hits.hits[0]._source as Screening;
 
-    const ticket = new Ticket(command.order.seats, command.order.order, screening);
+    const ticket = new Ticket(
+      command.order.seat,
+      command.order.order,
+      screening,
+    );
     delete ticket.fkScreeningId;
 
     return ticket;
