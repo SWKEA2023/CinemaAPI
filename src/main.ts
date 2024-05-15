@@ -34,7 +34,7 @@ async function bootstrap() {
   });
 
   setupSwagger(app);
-  await app.listen(3002);
+  await app.listen(configService.get('APP_PORT'));
 }
 
 bootstrap();
