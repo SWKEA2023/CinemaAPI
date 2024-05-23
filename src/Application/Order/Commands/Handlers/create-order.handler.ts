@@ -8,7 +8,13 @@ import { Ticket } from 'src/Domain/Entities/ticket.entity';
 export class CreateOrderHandler implements ICommandHandler<CreateOrderCommand> {
   constructor(private readonly esService: ElasticsearchService) {}
 
-  async execute(command: CreateOrderCommand) {
+  
+  /**
+   * @remarks This method is a command handler for creating an ticket
+   * @param CreateOrderCommand
+   * @returns Promise<Ticket>
+   */
+  async execute(command: CreateOrderCommand): Promise<Ticket> {
     const searchResult = await this.esService.search({
       query: {
         match: {

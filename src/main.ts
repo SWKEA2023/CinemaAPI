@@ -5,6 +5,10 @@ import { INestApplication } from '@nestjs/common';
 import { Transport, MicroserviceOptions } from '@nestjs/microservices';
 import { ConfigService } from '@nestjs/config';
 
+/**
+ * This setup up swagger for the application
+ * @param {INestApplication} app
+ */
 function setupSwagger(app: INestApplication): void {
   const documentBuilder = new DocumentBuilder()
     .setTitle('Cinema API')
@@ -18,6 +22,9 @@ function setupSwagger(app: INestApplication): void {
   });
 }
 
+/**
+ * This is the main function that bootstraps the application
+ */
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);

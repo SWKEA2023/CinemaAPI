@@ -13,10 +13,20 @@ export class Customer {
   @ApiProperty({ description: 'Phone number of the customer' })
   public phoneNumber: string;
 
+  /** @constructor 
+   * @param firstName
+   * @param lastName
+   * @param email
+   * @param phoneNumber
+  */
   constructor(
+    /** @private */
     firstName: string,
+    /** @private */
     lastName: string,
+    /** @private */
     email: string,
+    /** @private */
     phoneNumber: string,
   ) {
     this.firstName = firstName;
