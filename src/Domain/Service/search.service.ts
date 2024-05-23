@@ -9,18 +9,35 @@ import { GetSearchQuery } from 'src/Application/Search/Queries/Impl/get-search.q
 export class SearchService {
   constructor(private readonly queryBus: QueryBus) {}
 
+  /**
+   *  Get all Screenings
+   * @returns {Promise<String>}
+   */
   getScreenings() {
     return this.queryBus.execute(new GetScreeningsQuery());
   }
 
+  /**
+   *
+   * @param {string} search
+   * @returns Promise<String>
+   */
   getSearch(search: string) {
     return this.queryBus.execute(new GetSearchQuery(search));
   }
 
+  /**
+   * Get all Movies
+   * @returns Promise<String>
+   */
   getMovies() {
     return this.queryBus.execute(new GetMoviesQuery());
   }
 
+  /**
+   * Get all Halls
+   * @returns Promise<String>
+   */
   getHalls() {
     return this.queryBus.execute(new GetHallsQuery());
   }

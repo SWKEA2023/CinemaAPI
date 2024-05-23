@@ -10,7 +10,7 @@ export class CreateOrderHandler implements ICommandHandler<CreateOrderCommand> {
 
   
   /**
-   * @remarks This method is a command handler for creating an ticket
+   * This method is a command handler for creating an ticket
    * @param CreateOrderCommand
    * @returns Promise<Ticket>
    */

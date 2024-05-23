@@ -3,6 +3,9 @@ import { GetHallsQuery } from '../Impl/get-halls.query';
 import { ElasticsearchService } from '@nestjs/elasticsearch';
 import { Hall } from 'src/Domain/Entities/hall.entity';
 
+/**
+ * This class is a query handler for getting halls
+ */
 @QueryHandler(GetHallsQuery)
 export class GetHallsHandler {
   constructor(private readonly esService: ElasticsearchService) {}

@@ -4,6 +4,9 @@ import { ElasticsearchService } from '@nestjs/elasticsearch';
 import { GetMoviesQuery } from '../Impl/get-movies.query';
 import { Movie } from 'src/Domain/Entities/movie.entity';
 
+/**
+ * This class is a query handler for getting movies
+ */
 @QueryHandler(GetMoviesQuery)
 export class GetMoviesHandler implements IQueryHandler<GetMoviesQuery> {
   constructor(private readonly esService: ElasticsearchService) {}

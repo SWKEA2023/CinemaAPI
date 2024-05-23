@@ -21,6 +21,10 @@ export class OrderController {
     private readonly client: ClientProxy,
   ) {}
 
+  /**
+   * Creates order
+   * @param order 
+   */
   @Post()
   @ApiOperation({ summary: 'Create order' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })

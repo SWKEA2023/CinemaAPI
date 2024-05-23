@@ -12,6 +12,10 @@ import {
 export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
+  /**
+   * Get all screenings
+   * @returns any
+   */
   @Get('')
   @ApiOperation({ summary: 'Get all screenings' })
   @ApiResponse({
@@ -22,6 +26,11 @@ export class SearchController {
     return this.searchService.getScreenings();
   }
 
+  /**
+   * Get value/values by search
+   * @param {string} search 
+   * @returns any
+   */
   @Get(':search')
   @ApiOperation({ summary: 'Get value/values by search' })
   @ApiResponse({
@@ -32,6 +41,10 @@ export class SearchController {
     return this.searchService.getSearch(search);
   }
 
+  /**
+   * Get all movies
+   * @returns any
+   */
   @Get('movies')
   @ApiOperation({ summary: 'Get all movies' })
   @ApiResponse({
@@ -42,6 +55,10 @@ export class SearchController {
     return this.searchService.getMovies();
   }
 
+  /**
+   * Get all halls
+   * @returns any
+   */
   @Get('halls')
   @ApiOperation({ summary: 'Get all halls' })
   @ApiResponse({
